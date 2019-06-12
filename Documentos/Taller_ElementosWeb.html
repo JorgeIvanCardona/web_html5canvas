@@ -1,0 +1,246 @@
+﻿
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Elementos Web</title>
+
+<script type="text/javascript">
+//aquí la solución
+var respuestaCorrecta = new Array("a", "c", "a", "c", "d");
+		
+		function comprobarRadio(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion = document.getElementById("solucion");
+			var tablaResultados ="<table border='1' border-color= ='#DCDCDC'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.getElementsByName(j+1);
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+					var pgta =j+1;
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta correcta: </td><td>"
+						+ valor + "</td></tr>"; numeroRespuestasOK++
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta incorrecta: </td><td>"
+						+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion.innerHTML = tablaResultados;
+	}
+</script>
+<script>
+var respuestaCorrecta = new Array("1", "2", "3", "4", "1");
+		
+		function comprobarCheckbox(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion2 = document.getElementById("solucion2");
+			var tablaResultados ="<table border='1'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.form2.['check[]'];
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor[] = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Respuesta correcta: </td>"+ "<td>"+ valor + "</td></tr>";
+						numeroRespuestasOK++;
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Respuesta incorrecta: </td><td>"+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion2.innerHTML = tablaResultados;
+	}
+</script>
+  
+  <link type ="text/css" rel ="stylesheet" href = "reset.css"/>
+  <style type ="text/css">
+	h1 { color: #2F4F4F; }
+	h2 { color: #00BFFF; }
+	body {
+    background-color: #F8F8FF;
+	#colorTxt{color:#808080; }
+	font: 11px Verdana;
+	padding: 20px;
+	width: 1100px;
+	margin: auto;
+	
+	}
+	
+	div.lineaFrm {
+	overflow: hidden;
+	margin-bottom: 10px;
+	}
+	
+	#form1 {
+	float: left;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	
+	}
+	#form2 {
+	float: right;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	}
+	#btn_Click {
+	background-color: #D3D3F5;
+	padding: 8px;
+	font-weight: bold;
+	width: 100px;
+	}
+	#colorTxt {color:#00BFFF; }
+	#tamañoTxt {font-size:120%; }
+  </style>
+  </style>
+</head>
+<body>
+	<table width="1100">
+	<tr>
+		<td id="colorTxt" align="center" style="font-size:25px" colspan="2"><strong>Elementos Web</strong></td>
+	</tr>
+	<tr>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 1. De selección múltiple con una sola respuesta.</strong></td>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 2. De selección múltiple con una o varias respuestas.</strong></td>
+	</tr>
+	</table>
+	<div id ="form1">
+	<form action ="#" method ="post" name ="form1">
+	<fieldset id ="rdBtnForm1">
+	<div class ="lineaFrm">
+	<p>1: ¿Cuál es la etiqueta de HTML correcta para un salto de línea?</p>
+	<input type ="radio" name ="1" value ="a">
+	<span>a)  </span><span>&lt;br&gt;</span><br>
+	<input type ="radio" name ="1" value ="b">
+	<span>b)  </span><span>&lt;break&gt;</span><br>
+	<input type ="radio" name ="1" value ="c">
+	<span>c)  </span><span>&lt;h1&gt;</span><br>
+	<input type ="radio" name ="1" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores</span>
+	
+	<p>2: En HTML, las etiquetas &lt;h1&gt;, &lt;h2&gt; y &lt;h3&gt; se emplean para definir</p>
+	<input type ="radio" name ="2" value ="a">
+	<span>a)  </span><span>Enlaces</span><br>
+	<input type ="radio" name ="2" value ="b">
+	<span>b)  </span><span>Párrafos</span><br>
+	<input type ="radio" name ="2" value ="c">
+	<span>c)  </span><span>Encabezados </span><br>
+	<input type ="radio" name ="2" value ="d">
+	<span>d)  </span><span>Título de la página</span>
+	
+	<p>3: ¿En que sitio del documento HTML se hace referencia a una hoja de estilo externa?</p>
+	<input type ="radio" name ="3" value ="a">
+	<span>a)  </span><span>&lt;head&gt;</span><br>
+	<input type ="radio" name ="3" value ="b">
+	<span>b)  </span><span>&lt;link&gt;</span><br>
+	<input type ="radio" name ="3" value ="c">
+	<span>c)  </span><span>&lt;body&gt;</span><br>
+	<input type ="radio" name ="3" value ="d">
+	<span>d)  </span><span>&lt;h1&gt;</span>
+	
+	<p>4: ¿Dónde se puede insertar código JavaScript en un documento HTML?</p>
+	<input type ="radio" name ="4" value ="a">
+	<span>a)  </span><span>En la etiqueta &lt;head&gt;</span><br>
+	<input type ="radio" name ="4" value ="b">
+	<span>b)  </span><span>En la etiqueta &lt;body&gt;</span><br>
+	<input type ="radio" name ="4" value ="c">
+	<span>c)  </span><span>En cualquiera de las etiquetas &lt;head&gt; o &lt;body&gt;</span><br>
+	<input type ="radio" name ="4" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores es correcta</span>
+	
+	<p>5: ¿Cuál de las siguientes, no es una etiqueta de HTML correcta?</p>
+	<input type ="radio" name ="5" value ="a">
+	<span>a)  </span><span>&lt;input type="text"&gt;</span><br>
+	<input type ="radio" name ="5" value ="b">
+	<span>b)  </span><span>&lt;input type="checkbox"&gt;</span><br>
+	<input type ="radio" name ="5" value ="c">
+	<span>c)  </span><span>&lt;input type="button"&gt;</span><br>
+	<input type ="radio" name ="5" value ="d">
+	<span>d)  </span><span>&lt;input type="body"&gt;</span>
+	</div>
+	</fieldset>
+	</form>
+
+	<table>
+      <tr>
+	    <td><button type ="button" onclick="comprobarRadio(respuestaCorrecta)">Calificar</button></td>
+	    
+	  </tr>
+    </table>
+  <div id="solucion"></div>
+  </div>
+  
+  <div id ="form2">
+	<form action ="#" method ="post" name ="form2">
+	<fieldset id ="checkbox">
+	<div class ="lineaFrm">
+	<p>1: ¿Qué significa las sigla HTML5?</p>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">1- HTML: Hypertext Markup Language </label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">2- Lenguaje de rogramación</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">3- Internet de quinta generación</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">4- Acceso a servicios de internet</label>
+	</p>
+	
+	<p>2: ¿¿Cuáles de las etiquetas html no son correctas?</p>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">1- &lt;head&gt;</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="b2">2- &lt;head/&gt;</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">3- &lt;body&gt;</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">4- &lt;body/&gt;</label>
+	
+	<p>3: En HTML, la forma correcta de crear un comentario es</p>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">1- &lt;-- El comentario --&gt;</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">2- &lt;!-- El comentario --!&gt</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">3- &lt;!-- El comentario --&gt</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">4- &lt;-- El comentario --!&gt</label>
+	
+	<p>4: El HTML, &lt;input name="boton" type="submit" value="cargar" id="btn"&gt; muestra un botón con el texto... y su función es...</p>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">1- Texto del botón: cargar</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">2- Texto del botón: enviar</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">3- Función del botón: cargar</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">4- Función del botón: enviar</label>
+	
+	<p>5: ¿Cuáles de las siguientes instrucciones son correctas?</p>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">1- type=”textarea”</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">2- type=”select”</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">3- type=”text”</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">4- type=”button”</label>
+	</div>
+	</fieldset>
+  </form>
+  <table>
+    <tr>
+	  <td><button type ="button" onclick="comprobarCheckbox(respuestaCorrecta)">Calificar</button></td>
+	  
+	</tr>
+  </table>
+  <div id="solucion2"></div>
+  </div>
+</body>
+</html>

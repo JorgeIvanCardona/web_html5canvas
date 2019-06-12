@@ -1,0 +1,246 @@
+﻿
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Lenguaje sql</title>
+  <link href="../bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript">
+//aquí la solución
+var respuestaCorrecta = new Array("a", "c", "a", "c", "d");
+		
+		function comprobarRadio(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion = document.getElementById("solucion");
+			var tablaResultados ="<table border='1' border-color= ='#DCDCDC'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.getElementsByName(j+1);
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+					var pgta =j+1;
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta correcta: </td><td>"
+						+ valor + "</td></tr>"; numeroRespuestasOK++
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta incorrecta: </td><td>"
+						+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion.innerHTML = tablaResultados;
+	}
+</script>
+<script>
+var respuestaCorrecta = new Array("1", "2", "3", "4", "1");
+		
+		function comprobarCheckbox(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion2 = document.getElementById("solucion2");
+			var tablaResultados ="<table border='1'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.form2.['check[]'];
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor[] = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Respuesta correcta: </td>"+ "<td>"+ valor + "</td></tr>";
+						numeroRespuestasOK++;
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Respuesta incorrecta: </td><td>"+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion2.innerHTML = tablaResultados;
+	}
+</script>
+  
+  <link type ="text/css" rel ="stylesheet" href = "reset.css"/>
+  <style type ="text/css">
+	h1 { color: #2F4F4F; }
+	h2 { color: #00BFFF; }
+	body {
+    background-color: #F8F8FF;
+	#colorTxt{color:#808080; }
+	font: 11px Verdana;
+	padding: 20px;
+	width: 1100px;
+	margin: auto;
+	
+	}
+	
+	div.lineaFrm {
+	overflow: hidden;
+	margin-bottom: 10px;
+	}
+	
+	#form1 {
+	float: left;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	
+	}
+	#form2 {
+	float: right;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	}
+	#btn_Click {
+	background-color: #D3D3F5;
+	padding: 8px;
+	font-weight: bold;
+	width: 100px;
+	}
+	#colorTxt {color:#00BFFF; }
+	#tamañoTxt {font-size:120%; }
+  </style>
+  </style>
+</head>
+<body>
+	<table width="1100">
+	<tr>
+		<td id="colorTxt" align="center" style="font-size:25px" colspan="2"><strong>Lenguaje SQL</strong></td>
+	</tr>
+	<tr>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 1. De selección múltiple con una sola respuesta.</strong></td>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 2. De selección múltiple con una o varias respuestas.</strong></td>
+	</tr>
+	</table>
+	<div id ="form1">
+	<form action ="#" method ="post" name ="form1">
+	<fieldset id ="rdBtnForm1">
+	<div class ="lineaFrm">
+	<p>1: Esta cláusula permite indicar las tablas o vistas de las cuales vamos a obtener la información</p>
+	<input type ="radio" name ="1" value ="a">
+	<span>a)  </span><span>FROM</span><br>
+	<input type ="radio" name ="1" value ="b">
+	<span>b)  </span><span>INTO</span><br>
+	<input type ="radio" name ="1" value ="c">
+	<span>c)  </span><span>DELETE</span><br>
+	<input type ="radio" name ="1" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores</span>
+	
+	<p>2: Especifica la condición de filtro de las filas devueltas.</p>
+	<input type ="radio" name ="2" value ="a">
+	<span>a)  </span><span>INSERT</span><br>
+	<input type ="radio" name ="2" value ="b">
+	<span>b)  </span><span>AS</span><br>
+	<input type ="radio" name ="2" value ="c">
+	<span>c)  </span><span>WHERE</span><br>
+	<input type ="radio" name ="2" value ="d">
+	<span>d)  </span><span>ALL</span>
+	
+	<p>3: Permite seleccionar las columnas que se van a mostrar y en el orden en que lo van a hacer.</p>
+	<input type ="radio" name ="3" value ="a">
+	<span>a)  </span><span>SELECT</span><br>
+	<input type ="radio" name ="3" value ="b">
+	<span>b)  </span><span>LIKE</span><br>
+	<input type ="radio" name ="3" value ="c">
+	<span>c)  </span><span>SQL</span><br>
+	<input type ="radio" name ="3" value ="d">
+	<span>d)  </span><span>BETWEEN</span>
+	
+	<p>4: Define el orden de las filas del conjunto de resultados.</p>
+	<input type ="radio" name ="4" value ="a">
+	<span>a)  </span><span>LIKE</span><br>
+	<input type ="radio" name ="4" value ="b">
+	<span>b)  </span><span>DESC</span><br>
+	<input type ="radio" name ="4" value ="c">
+	<span>c)  </span><span>ORDER BY</span><br>
+	<input type ="radio" name ="4" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores es correcta</span>
+	
+	<p>5: Permite seleccionar todas las columnas que se van a mostrar y en el orden en que lo van a hacer.</p>
+	<input type ="radio" name ="5" value ="a">
+	<span>a)  </span><span>INSERT</span><br>
+	<input type ="radio" name ="5" value ="b">
+	<span>b)  </span><span>UPDATE</span><br>
+	<input type ="radio" name ="5" value ="c">
+	<span>c)  </span><span>FROM</span><br>
+	<input type ="radio" name ="5" value ="d">
+	<span>d)  </span><span>SELECT*</span>
+	</div>
+	</fieldset>
+	</form>
+
+	<table>
+      <tr>
+	    <td><button type ="button" class="btn btn-sm btn-success" onclick="comprobarRadio(respuestaCorrecta)">Calificar</button></td>
+	    
+	  </tr>
+    </table>
+  <div id="solucion"></div>
+  </div>
+  
+  <div id ="form2">
+	<form action ="#" method ="post" name ="form2">
+	<fieldset id ="checkbox">
+	<div class ="lineaFrm">
+	<p>1: ¿Qué significa las sigla SQL?</p>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">1- HTML: Hypertext Markup Language </label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">2- Lenguaje de rogramación</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">3- Internet de quinta generación</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">4- Acceso a servicios de internet</label>
+	</p>
+	
+	<p>2: ¿cuál de estas sentencias añade una fila a una tabla en una base de datos?</p>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">1- MAX()</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="b2">2- INSERT</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">3- UPDATE</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">4- IN</label>
+	
+	<p>3: Para ordenar los datos devueltos por una sentencia SELECT se emplea la cláusula</p>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">1- SORT BY </label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">2- DELETE</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">3- ORDER BY </label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">4- ORDERED BY</label>
+	
+	<p>4: En una cláusula LIKE, ¿cómo se obtienen todos los nombres de personas que comienzan con "Juan"?</p>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">1- LIKE "Juan%" </label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">2- LIKE "Juan$"</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">3- LIKE "Juan*"</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">4- LIKE "Juan&"</label>
+	
+	<p>5: ¿En cuál de las siguientes sentencias del lenguaje SQL se emplea la cláusula SET?</p>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">1- DELETE</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">2- DROP</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">3- SELECT*</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">4- ALL</label>
+	</div>
+	</fieldset>
+  </form>
+  <table>
+    <tr>
+	  <td><button type ="button" class="btn btn-sm btn-success" onclick="comprobarCheckbox(respuestaCorrecta)">Calificar</button></td>
+	  
+	</tr>
+  </table>
+  <div id="solucion2"></div>
+  </div>
+</body>
+</html>

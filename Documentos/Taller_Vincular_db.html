@@ -1,0 +1,246 @@
+﻿
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Lenguaje sql</title>
+
+<script type="text/javascript">
+//aquí la solución
+var respuestaCorrecta = new Array("a", "c", "a", "c", "d");
+		
+		function comprobarRadio(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion = document.getElementById("solucion");
+			var tablaResultados ="<table border='1' border-color= ='#DCDCDC'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.getElementsByName(j+1);
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+					var pgta =j+1;
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta correcta: </td><td>"
+						+ valor + "</td></tr>"; numeroRespuestasOK++
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Pregunta: </td><td>"+ pgta + "</td><td>Respuesta incorrecta: </td><td>"
+						+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion.innerHTML = tablaResultados;
+	}
+</script>
+<script>
+var respuestaCorrecta = new Array("1", "2", "3", "4", "1");
+		
+		function comprobarCheckbox(matriz){
+		
+			var numeroRespuestasOK=0;
+			var numeroRespuestasKO=0;
+			var solucion2 = document.getElementById("solucion2");
+			var tablaResultados ="<table border='1'>";
+			
+			for(j=0; j< matriz.length; j++){
+			var radios = document.form2.['check[]'];
+				for(i=0; i< radios.length;i++){
+					if (radios[i].checked){
+					var valor[] = radios[i].value; //a1...a4, b1...b4, c1...c4, d1...b4, f1...f4
+						if(valor == matriz[j]) {
+						tablaResultados+= "<tr><td>Respuesta correcta: </td>"+ "<td>"+ valor + "</td></tr>";
+						numeroRespuestasOK++;
+						break;
+						}else {
+						tablaResultados+= "<tr><td>Respuesta incorrecta: </td><td>"+ valor + "</td></tr>";
+						numeroRespuestasKO++;
+						break;
+						}
+					}
+				}
+			}
+			var numeroRespuestasNulas=matriz.length - (numeroRespuestasOK + numeroRespuestasKO);
+			tablaResultados+="<tr><td>Resultado: </td><td>Respuestas correctas:" +numeroRespuestasOK+ 
+			"<br/>Respuestas incorrectas: "+ numeroRespuestasKO+"<br/>Respuestas en blanco: "+
+			numeroRespuestasNulas+"</td></tr></table>";
+			solucion2.innerHTML = tablaResultados;
+	}
+</script>
+  
+  <link type ="text/css" rel ="stylesheet" href = "reset.css"/>
+  <style type ="text/css">
+	h1 { color: #2F4F4F; }
+	h2 { color: #00BFFF; }
+	body {
+    background-color: #F8F8FF;
+	#colorTxt{color:#808080; }
+	font: 11px Verdana;
+	padding: 20px;
+	width: 1100px;
+	margin: auto;
+	
+	}
+	
+	div.lineaFrm {
+	overflow: hidden;
+	margin-bottom: 10px;
+	}
+	
+	#form1 {
+	float: left;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	
+	}
+	#form2 {
+	float: right;
+	border: 2px solid #DCDCDC;
+	border-radius: 4px;
+	padding: 8px;
+	width: 500px;
+	}
+	#btn_Click {
+	background-color: #D3D3F5;
+	padding: 8px;
+	font-weight: bold;
+	width: 100px;
+	}
+	#colorTxt {color:#00BFFF; }
+	#tamañoTxt {font-size:120%; }
+  </style>
+  </style>
+</head>
+<body>
+	<table width="1100">
+	<tr>
+		<td id="colorTxt" align="center" style="font-size:25px" colspan="2"><strong>Vinculación de una Base de Batos a la Web</strong></td>
+	</tr>
+	<tr>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 1. De selección múltiple con una sola respuesta.</strong></td>
+		<td width="500" id="colorTxt" style="font-size: 20px" align="center"><strong>Taller 2. De selección múltiple con una o varias respuestas.</strong></td>
+	</tr>
+	</table>
+	<div id ="form1">
+	<form action ="#" method ="post" name ="form1">
+	<fieldset id ="rdBtnForm1">
+	<div class ="lineaFrm">
+	<p>1: Seleccione un identificador de inicio de código php</p>
+	<input type ="radio" name ="1" value ="a">
+	<span>a)  </span><span>&lt;?php</span><br>
+	<input type ="radio" name ="1" value ="b">
+	<span>b)  </span><span>&lt;?php&gt;</span><br>
+	<input type ="radio" name ="1" value ="c">
+	<span>c)  </span><span>php</span><br>
+	<input type ="radio" name ="1" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores</span>
+	
+	<p>2: Seleccione un identificador de finalización de código php</p>
+	<input type ="radio" name ="2" value ="a">
+	<span>a)  </span><span>&lt;script/;&gt;</span><br>
+	<input type ="radio" name ="2" value ="b">
+	<span>b)  </span><span>/php</span><br>
+	<input type ="radio" name ="2" value ="c">
+	<span>c)  </span><span>&lt;/script;&gt;</span><br>
+	<input type ="radio" name ="2" value ="d">
+	<span>d)  </span><span>*/</span>
+	
+	<p>3: ¿Cuál de lo siguientes es un comentario de una línea?</p>
+	<input type ="radio" name ="3" value ="a">
+	<span>a)  </span><span>// Soy un comentario de una línea</span><br>
+	<input type ="radio" name ="3" value ="b">
+	<span>b)  </span><span>// Soy un comentario de una línea*</span><br>
+	<input type ="radio" name ="3" value ="c">
+	<span>c)  </span><span>/* Soy un comentario de una línea</span><br>
+	<input type ="radio" name ="3" value ="d">
+	<span>d)  </span><span>*/Soy un comentario de una línea</span>
+	
+	<p>4: La sentencia crea una base de datos con el nombre dado es</p>
+	<input type ="radio" name ="4" value ="a">
+	<span>a)  </span><span>CREATE TABLE</span><br>
+	<input type ="radio" name ="4" value ="b">
+	<span>b)  </span><span>ALTER TABLE</span><br>
+	<input type ="radio" name ="4" value ="c">
+	<span>c)  </span><span>CREATE DATABASE</span><br>
+	<input type ="radio" name ="4" value ="d">
+	<span>d)  </span><span>Ninguna de las anteriores</span>
+	
+	<p>5: La sentencia que inicia la conexión a la base de datos con el usuario root es.</p>
+	<input type ="radio" name ="5" value ="a">
+	<span>a)  </span><span>show databases;</span><br>
+	<input type ="radio" name ="5" value ="b">
+	<span>b)  </span><span>conect to-database;</span><br>
+	<input type ="radio" name ="5" value ="c">
+	<span>c)  </span><span>describe books;</span><br>
+	<input type ="radio" name ="5" value ="d">
+	<span>d)  </span><span>mysql -u root</span>
+	</div>
+	</fieldset>
+	</form>
+
+	<table>
+      <tr>
+	    <td><button type ="button" onclick="comprobarRadio(respuestaCorrecta)">Calificar</button></td>
+	    
+	  </tr>
+    </table>
+  <div id="solucion"></div>
+  </div>
+  
+  <div id ="form2">
+	<form action ="#" method ="post" name ="form2">
+	<fieldset id ="checkbox">
+	<div class ="lineaFrm">
+	<p>1: Las siguientes sentencias actuan sober una base de datos</p>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">1- CREATE DATABASE</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">2- DATABASE-php</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">3- ALTER TABLE</label><br>
+	<label><input type ="checkbox" name ="check" id ="1" value ="a1">4- checkdb</label>
+	</p>
+	
+	<p>2: Son sistemas gestores de bases de datos que funciona con usuarios y permisos.</p>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">1- POSTGRE</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="b2">2- MySQL</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">3- GRANTDB</label><br>
+	<label><input type ="checkbox" name ="check" id ="2" value ="a1">4- PHP</label>
+	
+	<p>3: La siguiente sentencia muestra las tablas que existen en la base de datos.</p>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">1- show tables;</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">2- describe books;<br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">3- use library;</label><br>
+	<label><input type ="checkbox" name ="c3" id ="3" value ="a1">4- mysql -u root</label>
+	
+	<p>4: Una base de datos es:</p>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">1- Una página web que permite hacer consultas con sql</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">2- Una estructura que permite realizar planos</label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">3- Una herramienta que permite guardar información de forma organizada </label><br>
+	<label><input type ="checkbox" name ="d4" id ="4" value ="a1">4- Una forma de realizar compras en internet</label>
+	
+	<p>5: Tres de las herramientas tienen servicios similares</p>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">1- MySQL</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">2- XAMPP</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">3- phpMyAd</label><br>
+	<label><input type ="checkbox" name ="e5" id ="5" value ="a1">4- Excel</label>
+	</div>
+	</fieldset>
+  </form>
+  <table>
+    <tr>
+	  <td><button type ="button" onclick="comprobarCheckbox(respuestaCorrecta)">Calificar</button></td>
+	  
+	</tr>
+  </table>
+  <div id="solucion2"></div>
+  </div>
+</body>
+</html>
